@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
-
-import { appContextReducer, appDataReducer} from "./app/index";
+import { appContextReducer, appDataReducer, appHistoryReducer} from "./app/index";
+import errorReducer from './errorReducer';
+import authReducer from './authReducer';
 
 const reduxers = {
   appContext: appContextReducer,
-  appData: appDataReducer
+  appData: appDataReducer,
+  errors: errorReducer,
+  auth: authReducer,
+  history: appHistoryReducer
 };
 
 export default reduxers;

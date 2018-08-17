@@ -1,0 +1,8 @@
+export const GET_ERRORS = 'GET_ERRORS';
+
+export const REGISTER_USER = 'REGISTER_USER';
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+
+export const LOGIN_USER = 'LOGIN_USER';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
