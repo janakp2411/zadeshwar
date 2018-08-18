@@ -17,19 +17,19 @@ class AppRouters extends React.Component {
             setAuthToken(localStorage.jwtToken);
             const decoded = jwt_decode(localStorage.jwtToken);
             //store.dispatch(setCurrentUser(decoded));
-          
             const currentTime = Date.now() / 1000;
             if(decoded.exp < currentTime) {
               //store.dispatch(logoutUser());
-              window.location.href = '/'
+              // window.location.href = '/'
             }
         }
     }
+
     render(){
         return(
             <ViewTemplate>
                 <Switch>
-                    <Route exact path="/" component={Register} />
+                    <Route exact path="/janak" component={Register} />
                 </Switch>
             </ViewTemplate>
         )
