@@ -1,0 +1,1 @@
+export const historySelectory = (state) => state.history;

@@ -1,0 +1,9 @@
+.menu-col {
+    height: 400px;
+    background-color: rgba(0,0,0,0.75) !important;
+    color: white;
+    padding-top: 30px;
+}
+.menu-bar-conatiner {
+    margin-top: 30px; 
+}

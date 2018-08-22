@@ -1,0 +1,36 @@
+{
+  "name": "janakpatel",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "1.0.10"
+  },
+  "dependencies": {
+    "babel-polyfill": "~6.26.0",
+    "axios": "~0.18.0",
+    "classnames": "^2.2.6",
+    "jwt-decode": "~2.2.0",
+    "bootstrap": "~4.1.3",
+    "connected-react-router": "~4.3.0",
+    "history": "~4.7.2",
+    "prop-types": "~15.6.1",
+    "react": "~16.4.1",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "~16.4.1",
+    "react-js-google-maps": "^1.5.2",
+    "react-redux": "~5.0.7",
+    "react-responsive-navbar": "^1.0.11",
+    "react-router-dom": "~4.2.2",
+    "redux": "~4.0.0",
+    "redux-logger": "~3.0.6",
+    "redux-saga": "~0.16.0",
+    "reselect": "~3.0.1"
+  },
+  "proxy": "http://localhost:5000",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
