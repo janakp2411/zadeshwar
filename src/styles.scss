@@ -1,0 +1,175 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: "apercu",sans-serif !important;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 16px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 5px grey;  */
+    border: 0px;
+    border-top: 1px solid #a3abb3;
+    background: #ffffff;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #d8dada; 
+    border-radius: 10px;
+    border-top: 3px solid transparent;
+    border-bottom:  4px solid transparent;
+    background-clip: content-box;
+  }
+  
+  /* Handle on hover */
+  /* ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  } */
+  
+  .show-cell {
+    background: white;
+    border-left: 1px solid lightgrey !important;
+    border-right: 1px solid lightgrey !important;
+    border-bottom: 1px solid lightgrey !important;
+  }
+  
+  .show-name {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .show-presenter {
+    font-style: italic;
+  }
+  
+  .directory .directory-body .ui-toolbar {
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background: transparent;
+    border-bottom: none;
+    padding: 20px 0px;
+  }
+  
+  .directory .search-box .ui-inputgroup .ui-inputgroup-addon {
+      border-right: 1px solid #007ad9;
+      background-color: #007ad9;
+      color: white;
+      border: none;
+  }
+  
+  .ag-grid-container .ag-header-cell {
+    line-height: 48px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+  }
+  
+  .directory .ag-grid-container .ag-cell {
+    line-height: 46px;
+  }
+  
+  .directory {
+    padding: 0px 25px;
+  }
+  
+  .page-header {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 30px 0px 20px 0px;
+  }
+  
+  .control-panel-col {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0px 10px;
+  }
+  
+  .control-panel-col .ui-multiselect, body .ui-dropdown {
+    width: 200px;
+  }
+  
+  .directory .ag-grid-header-row {
+    text-align: right;
+    /* border: 1px solid #BDC3C7;
+    border-bottom: 0px; */
+  }
+  .directory .ag-grid-header-row .ag-grid-header-col {
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px;
+  }
+  
+  .grid-header {
+    display: inline-block;
+  }
+  
+  .pull-right {
+    float: right;
+  }
+  
+  /* .directory-body {
+    border: 1px solid #BDC3C7;
+    border-radius: 4px;
+  } */
+  
+  .directory .grid-header .ui-corner-right {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  
+  .directory .grid-header .ui-corner-all {
+    border-radius: 4px;
+  }
+  
+  body .directory .ui-multiselect .ui-multiselect-trigger {
+  background-color: transparent;
+  }
+  
+  .directory label {
+    margin-bottom: 0px;
+  }
+  
+  .directory .grid-header .ui-dropdown {
+    height: 35px;
+  }
+  
+  .directory .grid-header .ui-dropdown .ui-dropdown-trigger {
+    background-color: transparent;
+  }
+  
+  .directory .ag-cell {
+    font-weight: 550;
+    font-size: 14px;
+  }
+  
+  .directory .directory-body .ag-grid-container .ag-cell-focus {
+    border: none;
+  }
+  
+  .directory .directory-body .ui-multiselect .ui-multiselect-label,
+  .directory .directory-body .ui-inputtext, 
+  .directory .directory-body .ui-inputgroup .ui-inputgroup-addon {
+    color: #0064c6;
+    font-weight: bold;
+  }
+  
+  .directory .directory-body .ui-multiselect,
+  .directory .directory-body .ui-dropdown,
+  .directory .directory-body .ui-inputgroup {
+    border: 1px solid #0064c6;
+  }
+  
+  .directory .directory-body .pi-caret-down:before {
+    color: #0064c6;
+  }
+  
+  .directory .ui-button.ui-button-text-icon-left .ui-button-text {
+    text-transform: uppercase;
+    font-family: vaud, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+  }

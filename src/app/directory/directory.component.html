@@ -1,0 +1,100 @@
+
+<div class="directory">
+    <div class="page-header">
+        <div class="control-panel-col">
+            <h1>Directory Details</h1>
+        </div>
+        <div class="pull-right">
+            <div class="search-box">
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon"><i class="pi pi-search"></i></span>
+                        <input placeholder="Global Filter" [(ngModel)]="filterTerm"
+                            [disabled]="disableGloabalFilter"
+                            type="text" name="filterTerm" id="filterTerm"
+                            (ngModelChange)="this.onGlobalFilterChange.next($event)" />
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="directory-body">
+        <p-toolbar>
+            <div class="ui-toolbar-group-left">
+                <div class="control-panel-col">
+                    <p-dropdown
+                        [style]="{'minWidth':'200px'}"
+                        [showTransitionOptions]="'0ms'"
+                        [hideTransitionOptions]="'0ms'"
+                        [options]="country" 
+                        defaultLabel="Select Country"
+                        [(ngModel)]="selectedCountry"
+                        (onChange)="onCloseDropDown($event, 'country')">
+                </p-dropdown>
+                </div>
+                <div class="control-panel-col">
+                    <p-multiSelect
+                        [panelStyle]="{minWidth:'200'}"
+                        [optionLabel]="name"
+                        [options]="states"
+                        defaultLabel="Select State"
+                        [(ngModel)]="selectedStates"
+                        (onPanelHide)="onCloseDropDown($event, 'state')">
+                    </p-multiSelect>
+                </div>
+                <div class="control-panel-col">
+                    <p-dropdown
+                        (onChange)="onSelectionChange($event, 'viewType')" 
+                        [options]="gridViews" 
+                        [(ngModel)]="selectedView">
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="ui-toolbar-group-right">
+                <div class="control-panel-col">
+                    <p-button icon="pi pi-plus" label="ADD" (onClick)="onAddRecord()"></p-button>
+                </div>
+                <div class="control-panel-col">
+                    <p-button icon="pi pi-pencil" label="EDIT" [disabled]="disabledEdit" (onClick)="onEditRecord()"></p-button>
+                </div>
+                <div class="control-panel-col">
+                    <p-button icon="pi pi-times" styleClass="ui-button-danger" label="DELETE" [disabled]="disabledDelete" (onClick)="onDeleteRecords()"></p-button>
+                </div>
+                <div class="control-panel-col">
+                    <p-button icon="pi pi-download" label="CVS" (onClick)="onBtExport()"></p-button>
+                </div>
+            </div>
+        </p-toolbar>
+        <div class="ag-grid-container">
+            <ag-grid-angular
+                #agGrid
+                style="width: 100%; height: 100%;"
+                id="myGrid"
+                class="ag-theme-balham"
+                [columnTypes]="columnTypes"
+                [columnDefs]="columnDefs"
+                [rowData]="rowData"
+                [components]="components"
+                [defaultColDef]="defaultColDef"
+                [floatingFilter]="floatingFilter"
+                [suppressRowTransform]="true"
+                (gridReady)="onGridReady($event)"
+                [rowHeight]="rowHeight"
+                [headerHeight]="headerHeight"
+                [animateRows]="true"
+                [rowSelection]="rowSelection"
+                [suppressRowClickSelection]="suppressRowClickSelection"
+                [floatingFiltersHeight]="floatingFiltersHeight"
+                (dragStopped)="onDisplayedColumnsChanged($event)"
+                (displayedColumnsChanged)="onDisplayedColumnsChanged($event)"
+                (gridSizeChanged)="onGridSizeChanged($event)"
+                (selectionChanged)="onSelectionChanged($event)"
+            ></ag-grid-angular>
+        </div>
+    </div>
+</div>
+
+<app-detail-form
+    *ngIf="openAddUserDialog"
+    openAddUserDialog="openAddUserDialog"
+    [userConfigs]="userConfigs"
+    (hideDialog)="onHideDialog($event)">
+</app-detail-form>

@@ -1,0 +1,8 @@
+<h1>About Our Legends</h1>
+<div class="legends-conatiner">
+  <div class="img-container" *ngFor="let legend of legends">
+    <div class="img-name">{{legend.name}}</div>
+    <div class="img-src"><img [src]="legend.imageSrc"><img></div>
+    <div class="img-description">{{legend.description}}</div>
+  </div>
+</div>

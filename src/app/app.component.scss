@@ -1,0 +1,6 @@
+.app-conatainer {
+    height: calc(100% - 20px);
+    display: grid;
+    grid-template-rows: 56px 0px 1fr;
+    grid-template-columns: auto;
+}
