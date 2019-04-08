@@ -9,22 +9,24 @@ export class AuthService {
   authToken: any;
   user: any;
   isDev: any;
+  endPointDomain: any;
 
   constructor(private http: Http) {
       this.isDev = false;  // Change to false before deployment
+      this.endPointDomain = this.isDev ? "http://localhost:8080/" : ''
       }
 
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('users/register', user, {headers: headers})
+    return this.http.post(this.endPointDomain +'users/register', user, {headers: headers})
       .map(res => res.json());
   }
 
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('users/authenticate', user, {headers: headers})
+    return this.http.post(this.endPointDomain + 'users/authenticate', user, {headers: headers})
       .map(res => res.json());
   }
 
@@ -33,13 +35,13 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('users/profile', {headers: headers})
+    return this.http.get(this.endPointDomain + 'users/profile', {headers: headers})
       .map(res => res.json());
   }
 
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem(this.endPointDomain + 'user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
   }

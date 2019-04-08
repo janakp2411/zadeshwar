@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user:Object;
+  userDetais: Object = {};
 
   constructor(private authService:AuthService, private router:Router) { }
 
@@ -20,6 +21,10 @@ export class ProfileComponent implements OnInit {
        console.log(err);
        return false;
      });
+  }
+
+  onUserDetailsSubmit(data){
+    console.log(data)
   }
 
 }
