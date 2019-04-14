@@ -1,23 +1,21 @@
-<div>
 <h2 class="page-header">Register</h2>
-<form (submit)="onRegisterSubmit()" >
+<form (submit)="onRegisterSubmit()">
   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" [(ngModel)]="name" name="name" class="form-control" id="name" placeholder="Enter Name">
+    <label>Name</label>
+    <input type="text" autocomplete="off" [(ngModel)]="name" name="name" class="form-control">
   </div>
   <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" [(ngModel)]="username" name="username" class="form-control" id="username" placeholder="Enter Username">
+    <label>Email</label>
+    <input type="text" autocomplete="off" [(ngModel)]="email" name="email" class="form-control" >
   </div>
   <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <label>Password</label>
+    <input type="password" autocomplete="off" [(ngModel)]="password" name="password" class="form-control">
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" placeholder=" Enter Password">
+    <label>Confirm Password</label>
+    <input type="password" autocomplete="off" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-control">
   </div>
   <input type="submit" class="btn btn-primary" value="Submit">
+  <span class="ml-4"><a class="link text-primary" [routerLink]="['/login']">Already Registered ?</a></span>
 </form>
-</div>

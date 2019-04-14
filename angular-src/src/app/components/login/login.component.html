@@ -8,10 +8,7 @@
         <label for="Password">Password</label>
         <input type="password" class="form-control" placeholder=" Enter Password" [(ngModel)]="password" name="password">
         </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
         <input class="btn btn-lg btn-primary" type="submit" value="Login">
+        <span class="ml-4"><a class="link text-primary" [routerLink]="['/forgotpassword']">forgot Password ?</a></span>
+        <div class="mt-4"><a class="link text-primary" [routerLink]="['/register']">Not Registered yet ?</a></div>
 </form>

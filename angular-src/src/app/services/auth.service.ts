@@ -60,4 +60,21 @@ export class AuthService {
     this.user = null;
     localStorage.clear();
   }
+
+  forgotPasswordService(email){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    let ep = this.endPointDomain + 'users/forgotpassword';
+    return this.http.post(ep, email,{headers: headers})
+      .map(res => res.json());
+  }
+
+  resetPasswordService(password){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    let ep = this.endPointDomain + 'users/resetpassword';
+    return this.http.post(ep, password,{headers: headers})
+      .map(res => res.json());
+  }
+
 }

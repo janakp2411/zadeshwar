@@ -1,3 +1,4 @@
-.zadeshwar-bg {
-    background-color: rgba(0,0,0,0.6);
- }
+nav {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    box-shadow: #292b2c -2px 5px 17px;
+}

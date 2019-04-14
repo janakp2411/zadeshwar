@@ -4,17 +4,19 @@
   "description": "MEAN stack authentication app",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "nodemon"
   },
   "dependencies": {
-    "express": "4.16.2",
-    "mongoose": "4.13.6",
     "bcryptjs": "2.4.3",
-    "cors": "2.8.4",
-    "jsonwebtoken": "8.1.0",
     "body-parser": "1.18.2",
+    "cors": "2.8.4",
+    "crypto": "^1.0.1",
+    "express": "4.16.2",
+    "jsonwebtoken": "8.1.0",
+    "mongoose": "4.13.6",
     "passport": "0.4.0",
-    "passport-jwt": "3.0.1"
+    "passport-jwt": "3.0.1",
+    "sendgrid": "^5.1.1"
   },
   "author": "",
   "license": "MIT",
