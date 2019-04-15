@@ -8,18 +8,25 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
-  isDev: any;
   endPointDomain: any;
 
   constructor(private http: Http) {
-      this.isDev = false;  // Change to false before deployment
-      this.endPointDomain = this.isDev ? "http://localhost:8080/" : ''
+      this.endPointDomain = window.location.hostname === 'localhost' ? "http://localhost:8080/" : ''
       }
 
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post(this.endPointDomain +'users/register', user, {headers: headers})
+      .map(res => res.json());
+  }
+
+  addUserDetails(details){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.endPointDomain + 'users/addUserDetails', details, {headers: headers})
       .map(res => res.json());
   }
 

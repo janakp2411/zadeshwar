@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const UserDetails = require('../models/userDetails');
 const crypto = require('crypto');
 
 function fullUrl(req) {
@@ -180,8 +181,30 @@ router.post('/resetpassword', (req, res, next) => {
 });
 
 // Profile
-router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res) => {
   res.json({user: req.user});
+});
+
+// Use Details
+router.post('/addUserDetails', passport.authenticate('jwt', {session:false}), (req, res) => {
+  console.log(req.body)
+  User.findOne({ _id: req.body.id }, (err, user) => {
+    if(user){
+      const userDetails = new UserDetails({
+        ...req.body
+      })
+      userDetails.save(function(err, details){
+        if(err){
+          console.log(err)
+          return res.json({userDetails: details})
+        }
+        if(details){
+          console.log(details)
+          return res.json({success: true,msg: 'Details saved', userDetails: details})
+        }
+      })
+    }
+  })
 });
 
 module.exports = router;

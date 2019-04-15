@@ -413,7 +413,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\" >Login</h2>\n<form class=\"form-signin\" (submit)=\"onLoginSubmit()\">\n        <div class=\"form-group\">\n          <label for=\"Username\">Email:</label>\n          <input type=\"text\" class=\"form-control\" placeholder=\"Enter Username\" [(ngModel)]=\"email\" name=\"username\">\n        </div>\n        <div class=\"form-group\">\n        <label for=\"Password\">Password:</label>\n        <input type=\"password\" class=\"form-control\" placeholder=\" Enter Password\" [(ngModel)]=\"password\" name=\"password\">\n        </div>\n        <input class=\"btn btn-lg btn-primary\" type=\"submit\" value=\"Login\">\n        <span class=\"ml-4\"><a class=\"link text-primary\" [routerLink]=\"['/forgotpassword']\">forgot Password ?</a></span>\n        <div class=\"mt-4\"><a class=\"link text-primary\" [routerLink]=\"['/register']\">Not Registered yet ?</a></div>\n</form>\n"
+module.exports = "<h2 class=\"page-header\" >Login</h2>\n<form class=\"form-signin\" (submit)=\"onLoginSubmit()\">\n        <div class=\"form-group\">\n          <label for=\"Username\">Email:</label>\n          <input type=\"text\" class=\"form-control\" placeholder=\"Enter Username\" [(ngModel)]=\"email\" name=\"email\">\n        </div>\n        <div class=\"form-group\">\n        <label for=\"Password\">Password:</label>\n        <input type=\"password\" class=\"form-control\" placeholder=\" Enter Password\" [(ngModel)]=\"password\" name=\"password\">\n        </div>\n        <input class=\"btn btn-lg btn-primary\" type=\"submit\" value=\"Login\">\n        <span class=\"ml-4\"><a class=\"link text-primary\" [routerLink]=\"['/forgotpassword']\">Forgot Password ?</a></span>\n        <div class=\"mt-4\"><a class=\"link text-primary\" [routerLink]=\"['/register']\">Not Registered yet ?</a></div>\n</form>\n"
 
 /***/ }),
 
@@ -585,7 +585,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}}</h2>\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">Username : {{user.username}}</li>\n    <li class=\"list-group-item\">Email : {{user.email}}</li>\n  </ul>\n</div>\n\n<div class=\"mt-5\">\n  <h2 class=\"page-header\">Please Enter Your Details</h2>\n  <form (submit)=\"onUserDetailsSubmit(userDetais)\" >\n    <div class=\"form-group\">\n      <label for=\"name\">Address</label>\n      <input type=\"text\" [(ngModel)]=\"userDetais.address\" name=\"name\" class=\"form-control\" id=\"name\" placeholder=\"Enter Address\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"street\">Street Name</label>\n      <input type=\"text\" [(ngModel)]=\"userDetais.street\" name=\"username\" class=\"form-control\" id=\"username\" placeholder=\"Enter Street Name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"phone\">Phone Number</label>\n      <input type=\"phone\" [(ngModel)]=\"userDetais.phone\" name=\"email\" class=\"form-control\" id=\"email\" aria-describedby=\"emailHelp\" placeholder=\"Enter Email\">\n      <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your phone number with anyone else.</small>\n    </div>\n    <!-- <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\" id=\"password\" placeholder=\" Enter Password\">\n    </div> -->\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n  </form>\n  </div>\n"
+module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}}</h2>\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">Email : {{user.email}}</li>\n  </ul>\n</div>\n\n<div class=\"mt-5\">\n  <h2 class=\"page-header\">Please Enter Your Details</h2>\n  <form (submit)=\"onUserDetailsSubmit(userDetais)\" >\n    <div class=\"form-group\">\n      <label for=\"name\">Address:</label>\n      <input type=\"text\" [(ngModel)]=\"userDetais.address\" name=\"name\" class=\"form-control\" id=\"address\" placeholder=\"Enter Address\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"street\">Number Of Famlily Member:</label>\n      <input type=\"text\" [(ngModel)]=\"userDetais.familyMember\" name=\"familyMember\" class=\"form-control\" id=\"\" placeholder=\"Enter Total Family Member\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"phone\">Phone Number:</label>\n      <input type=\"phone\" [(ngModel)]=\"userDetais.phone\" name=\"phone\" class=\"form-control\" id=\"phone\" aria-describedby=\"phoneHelp\" placeholder=\"Enter Phone\">\n      <small id=\"phoneHelp\" class=\"form-text text-muted\">We'll never share your phone number with anyone else.</small>\n    </div>\n    <!-- <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\" id=\"password\" placeholder=\" Enter Password\">\n    </div> -->\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n  </form>\n  </div>\n"
 
 /***/ }),
 
@@ -597,6 +597,16 @@ module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -609,10 +619,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ProfileComponent = (function () {
-    function ProfileComponent(authService, router) {
+    function ProfileComponent(authService, router, flashMessage) {
         this.authService = authService;
         this.router = router;
+        this.flashMessage = flashMessage;
         this.userDetais = {};
     }
     ProfileComponent.prototype.ngOnInit = function () {
@@ -624,8 +636,17 @@ var ProfileComponent = (function () {
             return false;
         });
     };
-    ProfileComponent.prototype.onUserDetailsSubmit = function (data) {
-        console.log(data);
+    ProfileComponent.prototype.onUserDetailsSubmit = function (details) {
+        var _this = this;
+        this.authService.addUserDetails(__assign({}, details, { id: this.user._id })).subscribe(function (data) {
+            window.scrollTo(0, 0);
+            if (data.success) {
+                _this.flashMessage.show('Your changes are saved', { cssClass: 'alert-success', timeout: 3000 });
+            }
+            else {
+                _this.flashMessage.show('Your changes are not saved', { cssClass: 'alert-danger', timeout: 3000 });
+            }
+        });
     };
     ProfileComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -633,7 +654,9 @@ var ProfileComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/profile/profile.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/profile/profile.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]])
     ], ProfileComponent);
     return ProfileComponent;
 }());
@@ -951,13 +974,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.isDev = false; // Change to false before deployment
-        this.endPointDomain = this.isDev ? "http://localhost:8080/" : '';
+        this.endPointDomain = window.location.hostname === 'localhost' ? "http://localhost:8080/" : '';
     }
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.endPointDomain + 'users/register', user, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    AuthService.prototype.addUserDetails = function (details) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.loadToken();
+        headers.append('Authorization', this.authToken);
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.endPointDomain + 'users/addUserDetails', details, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.authenticateUser = function (user) {

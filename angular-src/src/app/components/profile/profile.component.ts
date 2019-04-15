@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-profile',
@@ -8,10 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user:Object;
+  user:any;
   userDetais: Object = {};
 
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(
+    private authService:AuthService, 
+    private router:Router,  
+    private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => {
@@ -23,8 +27,15 @@ export class ProfileComponent implements OnInit {
      });
   }
 
-  onUserDetailsSubmit(data){
-    console.log(data)
+  onUserDetailsSubmit(details){
+    this.authService.addUserDetails({...details, id: this.user._id}).subscribe(data => {
+      window.scrollTo(0,0);
+      if(data.success){
+        this.flashMessage.show('Your changes are saved', {cssClass: 'alert-success', timeout: 3000});
+      } else {
+        this.flashMessage.show('Your changes are not saved', {cssClass: 'alert-danger', timeout: 3000});
+      }
+    });
   }
 
 }
