@@ -49,17 +49,13 @@ router.post('/register', (req, res, next) => {
 });
 
 // Authenticate
-router.post('/authenticate', (req, res, next) => {
+router.post('/authenticate', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  console.log(fullUrl(req), 'fullUrl(req)fullUrl(req)')
 
   User.getUserByUsername(email, (err, user) => {
     if(err) throw err;
-    if(!user) {
-      return res.json({success: false, msg: 'User not found'});
-    }
-
+    if(!user) return res.json({success: false, msg: 'User not found'});
     User.comparePassword(password, user.password, (err, isMatch) => {
       if(err) throw err;
       if(isMatch) {
