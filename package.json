@@ -4,7 +4,7 @@
   "description": "MEAN stack authentication app",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "node app"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
