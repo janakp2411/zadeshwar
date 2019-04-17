@@ -10,7 +10,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class ProfileComponent implements OnInit {
   user:any;
-  userDetais: Object = {};
+  userDetailsData: any = [{}];
 
   constructor(
     private authService:AuthService, 
@@ -27,8 +27,24 @@ export class ProfileComponent implements OnInit {
      });
   }
 
+  onAddNewUser(){
+    this.userDetailsData.push({});
+  }
+
+  onDeleteMember(index){
+    this.userDetailsData.splice(index, 1);
+    if(!this.userDetailsData.length){
+      this.userDetailsData.push({})
+    }
+  }
+
+  onClearMember(index){
+    this.userDetailsData[index] = {};
+  }
+
   onUserDetailsSubmit(details){
-    this.authService.addUserDetails({...details, id: this.user._id}).subscribe(data => {
+    console.log(this.userDetailsData)
+    this.authService.addUserDetails({userDetails: {userDetails: details, id: this.user._id}}).subscribe(data => {
       window.scrollTo(0,0);
       if(data.success){
         this.flashMessage.show('Your changes are saved', {cssClass: 'alert-success', timeout: 3000});
