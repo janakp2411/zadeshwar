@@ -1,0 +1,16 @@
+.panel-container {
+  border: 1px solid #DFD7CA;
+}
+
+.panel-header {
+  border-bottom: 1px solid #DFD7CA;
+  padding: 0.75rem 1.25rem;
+}
+
+.panel-body {
+   padding: 0.75rem 1.25rem;
+}
+
+.panel-footer {
+  padding: 0.75rem 1.25rem;
+}
