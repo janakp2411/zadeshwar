@@ -9,7 +9,7 @@
     "test": "cd angular-src ng test",
     "lint": "cd angular-src ng lint",
     "e2e": "cd angular-src ng e2e",
-    "heroku-postbuild": "cd angular-src && ng build — aot — prod",
+    "heroku-postbuild": "cd angular-src && ng build",
     "postinstall": "cd angular-src && npm install"
   },
   "dependencies": {
