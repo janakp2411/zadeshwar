@@ -4,7 +4,8 @@
   "description": "MEAN stack authentication app",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "node app",
+    "heroku-postbuild": "cd angular-src && npm install && ng build --prod"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
