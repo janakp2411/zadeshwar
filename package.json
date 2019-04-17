@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "heroku-postbuild": "cd angular-src && ng build",
-    "postinstall": "cd angular-src && npm install"
+    "heroku-postbuild": "cd angular-src && npm install"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
