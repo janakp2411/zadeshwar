@@ -4,7 +4,13 @@
   "description": "MEAN stack authentication app",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "node app",
+     "build": "cd angular-src ng build",
+    "test": "cd angular-src ng test",
+    "lint": "cd angular-src ng lint",
+    "e2e": "cd angular-src ng e2e",
+    "heroku-postbuild": "cd angular-src ng build --aot -prod",
+    "postinstall": "cd angular-src ng build --aot -prod"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
