@@ -1,12 +1,4 @@
-# MEANauthapp
-
-Complete MEAN stack application with authentication using json web tokens
-
-### Version
-1.0.0
-
-## Usage
-
+# Zadeshwar Village Application
 
 ### Installation
 
@@ -21,4 +13,4 @@ Run app
 $ npm start
 ```
 
-### Screenshots in Wiki: https://github.com/tomcatbuzz/meanauthapp/wiki
+### https://zadewshwar.herokuapp.com
