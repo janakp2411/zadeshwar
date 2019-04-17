@@ -28,5 +28,9 @@
   "license": "MIT",
   "devDependencies": {
     "@angular/cli": "^1.6.0"
+  },
+    "engines": {
+    "node": "7.8.0",
+    "npm": "4.6.1"
   }
 }
