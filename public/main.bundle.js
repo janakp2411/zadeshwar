@@ -585,7 +585,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}}</h2>\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">Email : {{user.email}}</li>\n  </ul>\n</div>\n\n<div class=\"mt-5\">\n  <h2 class=\"page-header\">Please Enter Your Details</h2>\n  <form (submit)=\"onUserDetailsSubmit(userDetais)\" >\n    <div class=\"form-group\">\n      <label for=\"name\">Address:</label>\n      <input type=\"text\" [(ngModel)]=\"userDetais.address\" name=\"name\" class=\"form-control\" id=\"address\" placeholder=\"Enter Address\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"street\">Number Of Famlily Member:</label>\n      <input type=\"text\" [(ngModel)]=\"userDetais.familyMember\" name=\"familyMember\" class=\"form-control\" id=\"\" placeholder=\"Enter Total Family Member\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"phone\">Phone Number:</label>\n      <input type=\"phone\" [(ngModel)]=\"userDetais.phone\" name=\"phone\" class=\"form-control\" id=\"phone\" aria-describedby=\"phoneHelp\" placeholder=\"Enter Phone\">\n      <small id=\"phoneHelp\" class=\"form-text text-muted\">We'll never share your phone number with anyone else.</small>\n    </div>\n    <!-- <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\" id=\"password\" placeholder=\" Enter Password\">\n    </div> -->\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n  </form>\n  </div>\n"
+module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}}</h2>\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">Email : {{user.email}}</li>\n  </ul>\n</div>\n\n<div class=\"mt-3\" *ngFor=\"let userDetails of userDetailsData; index as i;\">\n  <h4 class=\"page-header\">Memebr {{i + 1}}</h4>\n  <form>\n    <div class=\"form-row\">\n      <div class=\"col-md-4 mb-3\">\n        <input type=\"text\" [(ngModel)]=\"userDetails.name\" name=\"name\" class=\"form-control\" id=\"name\" placeholder=\"Name\">\n      </div>\n      <div class=\"col-md-4 mb-3\">\n          <input type=\"text\" [(ngModel)]=\"userDetails.middleName\" name=\"middleName\" class=\"form-control\" id=\"\" placeholder=\"Middle Name\">\n        </div>\n      <div class=\"col-md-4 mb-3\">\n        <input type=\"text\" [(ngModel)]=\"userDetails.surName\" name=\"surName\" class=\"form-control\" id=\"\" placeholder=\"Surname\">\n      </div>\n    </div>\n    <div class=\"form-row\">\n      <div class=\"col-md-4 mb-3\">\n        <input type=\"number\" [(ngModel)]=\"userDetails.phone\" name=\"phone\" class=\"form-control\" id=\"phone\" placeholder=\"555-555-5555\">\n      </div>\n      <div class=\"col-md-4 mb-3\">\n        <input type=\"email\" [(ngModel)]=\"userDetails.email\" name=\"email\" class=\"form-control\" id=\"email\" placeholder=\"jayzadeshwar@gmail.com\">\n      </div>\n      <div class=\"col-md-4 mb-3\">\n        <input type=\"date\" [(ngModel)]=\"userDetails.birthdate\" name=\"birthdate\" class=\"form-control\" id=\"birthdate\" placeholder=\"Birthdate\">\n      </div>\n    </div>\n    <div class=\"form-row\">\n        <div class=\"col-md-4 mb-3\">\n          <input type=\"text\" [(ngModel)]=\"userDetails.address\" name=\"address\" class=\"form-control\" id=\"address\" placeholder=\"Address\">\n        </div>\n        <div class=\"col-md-4 mb-3\">\n          <input type=\"text\" [(ngModel)]=\"userDetails.state\" name=\"email\" class=\"form-control\" id=\"state\" placeholder=\"State\">\n        </div>\n        <div class=\"col-md-4 mb-3\">\n          <input type=\"text\" [(ngModel)]=\"userDetails.zipcode\" name=\"zipcode\" class=\"form-control\" id=\"zipcode\" placeholder=\"Zipcode\">\n        </div>\n      </div>\n  </form>\n  <button class=\"btn btn-primary\" (click)=\"onClearMember(i)\">Clear</button>\n  <button class=\"btn btn-danger\" (click)=\"onDeleteMember(i)\">Remove</button>\n</div>\n\n<div class=\"mt-3\">\n  <button class=\"btn btn-primary\" (click)=\"onUserDetailsSubmit(userDetailsData)\">Save</button>\n  <button class=\"btn btn-primary\" (click)=\"onAddNewUser()\">Add New User</button>\n</div>"
 
 /***/ }),
 
@@ -599,14 +599,6 @@ module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -625,7 +617,7 @@ var ProfileComponent = (function () {
         this.authService = authService;
         this.router = router;
         this.flashMessage = flashMessage;
-        this.userDetais = {};
+        this.userDetailsData = [{}];
     }
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -636,9 +628,22 @@ var ProfileComponent = (function () {
             return false;
         });
     };
+    ProfileComponent.prototype.onAddNewUser = function () {
+        this.userDetailsData.push({});
+    };
+    ProfileComponent.prototype.onDeleteMember = function (index) {
+        this.userDetailsData.splice(index, 1);
+        if (!this.userDetailsData.length) {
+            this.userDetailsData.push({});
+        }
+    };
+    ProfileComponent.prototype.onClearMember = function (index) {
+        this.userDetailsData[index] = {};
+    };
     ProfileComponent.prototype.onUserDetailsSubmit = function (details) {
         var _this = this;
-        this.authService.addUserDetails(__assign({}, details, { id: this.user._id })).subscribe(function (data) {
+        console.log(this.userDetailsData);
+        this.authService.addUserDetails({ userDetails: { userDetails: details, id: this.user._id } }).subscribe(function (data) {
             window.scrollTo(0, 0);
             if (data.success) {
                 _this.flashMessage.show('Your changes are saved', { cssClass: 'alert-success', timeout: 3000 });
