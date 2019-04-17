@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng-serve",
-    "build": "ng build"
+    "build": "ng build",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
