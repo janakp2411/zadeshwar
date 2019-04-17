@@ -10,7 +10,7 @@
     "lint": "cd angular-src ng lint",
     "e2e": "cd angular-src ng e2e",
     "heroku-postbuild": "cd angular-src && ng build — aot — prod",
-    "postinstall": "cd angular-src && && npm install"
+    "postinstall": "cd angular-src && npm install"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
