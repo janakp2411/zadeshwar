@@ -21,6 +21,10 @@
      "@angular/cli": "^1.6.0",
     "@angular/compiler-cli": "^4.4.6"
   },
+  "engines": {
+  "node": "10.15.3",
+  "npm": "6.4.1"
+},
   "author": "",
   "license": "MIT"
 }
