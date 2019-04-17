@@ -16,11 +16,11 @@
     "mongoose": "4.13.6",
     "passport": "0.4.0",
     "passport-jwt": "3.0.1",
-    "sendgrid": "^5.1.1"
+    "sendgrid": "^5.1.1",
+     "@angular/cli": "^1.6.0",
+    "@angular/compiler-cli": "^4.4.6",
+    
   },
   "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "@angular/cli": "^1.6.0"
-  }
+  "license": "MIT"
 }
