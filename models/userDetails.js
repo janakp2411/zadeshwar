@@ -4,23 +4,15 @@ const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 
 // User Schema
-const UserSchema = new Schema({
-  address: {
-    type: String,
-    require:true
-  },
-  familyMember: {
-    type: String,
-    required: true
-  },
-  phone: {
-    type: String,
-    required: true
-  },
-  id: {
-    type: String,
-    required: true
-  }
-});
+const UserSchema = new Schema({id: '', userData:  [{}]});
 
-const User = module.exports = mongoose.model('userDetains', UserSchema);
+const UserDetails = module.exports = mongoose.model('userDetails', UserSchema);
+
+module.exports.getUserById = function(id, callback) {
+  UserDetails.findOne({id}, callback);
+}
+
+module.exports.replaceOneById = function(id, data, callback) {
+  UserDetails.update({id},  {$set:data}, callback);
+}
+

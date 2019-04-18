@@ -6,6 +6,8 @@ const config = require('../config/database');
 const User = require('../models/user');
 const UserDetails = require('../models/userDetails');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 function fullUrl(req) {
   return req.protocol + '://' + req.get('host');
@@ -182,28 +184,51 @@ router.post('/resetpassword', (req, res, next) => {
 
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res) => {
-  res.json({user: req.user});
+  const id = req.user._id
+  UserDetails.getUserById(id, (err, user) => {
+    const userInfo = {
+      email: req.user.email,
+      name: req.user.name,
+      role: req.user.role,
+      _id: req.user._id
+    }
+    res.json({user: userInfo, userDetails: user && user.userData});
+  })
 });
 
 // Use Details
 router.post('/addUserDetails', passport.authenticate('jwt', {session:false}), (req, res) => {
-  console.log(req.body)
-  const data = req.body.userDetails;
-  const id = data.id;
-  const userDetails = data.userDetails;
-  User.findOne({ _id: id }, (err, user) => {
+  const { userDetails } = req.body;
+  const { id } = userDetails;
+  const userDetailsData = userDetails.userDetails;
+  UserDetails.findOne({ _id: id }, (err, user) => {
     if(user){
-      const userDetails = new UserDetails({
-        ...userDetails
-      })
-      userDetails.save(function(err, details){
-        if(err){
-          console.log(err)
-          return res.json({success: true,msg: 'Details not saved',userDetails: details})
-        }
+      console.log('user found')
+      // const data = new UserDetails({id: user._id, userData:userDetailsData});
+      UserDetails.replaceOneById(mongoose.Types.ObjectId(id), {userData:userDetailsData, id:mongoose.Types.ObjectId(id)}, (err, details) => {
+        console.log(details, err)
+        // console.log(err, 'Details savedDetails savedDetails saved')
         if(details){
-          console.log(details)
           return res.json({success: true,msg: 'Details saved', userDetails: details})
+        } else {
+          return res.json({success: false,msg: 'Details not saved',userDetails: details})
+        }
+      })
+      // data.save(function(err, details){
+      //   if(details){
+      //     return res.json({success: true,msg: 'Details saved', userDetails: details.userData})
+      //   } else {
+      //     return res.json({success: true,msg: 'Details not saved',userDetails: details})
+      //   }
+      // })
+    } else {
+      console.log('user not found')
+      const data = new UserDetails({id: mongoose.Types.ObjectId(id), userData:userDetailsData});
+      data.save(function(err, details){
+        if(details){
+          return res.json({success: true,msg: 'Details saved', userDetails: details.userData})
+        } else {
+          return res.json({success: true,msg: 'Details not saved',userDetails: details})
         }
       })
     }

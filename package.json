@@ -4,8 +4,8 @@
   "description": "MEAN stack authentication app",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-     "heroku-postbuild": "cd angular-src && npm install && ng build"
+    "start": "nodemon",
+    "heroku-postbuild": "cd angular-src && npm install && ng build"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
@@ -18,13 +18,16 @@
     "passport": "0.4.0",
     "passport-jwt": "3.0.1",
     "sendgrid": "^5.1.1",
-     "@angular/cli": "^1.6.0",
+    "@angular/cli": "^1.6.0",
     "@angular/compiler-cli": "^4.4.6"
   },
   "engines": {
-  "node": "10.15.3",
-  "npm": "6.4.1"
-},
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
 }

@@ -65,8 +65,6 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
 }
 
 module.exports.changePassword = (user, newPassword, callback) => {
-  console.log(user, newPassword)
-
   bcrypt.genSalt(10, (err, salt) => {
     if(err){
       callback(true, false);
@@ -85,7 +83,6 @@ module.exports.changePassword = (user, newPassword, callback) => {
 };
 
 module.exports.sendEmail = function(data, callback){
-
   var helper = require('sendgrid').mail,
       fromEmail = new helper.Email('janakp2411@gmail.com'),
       toEmail = new helper.Email(data.user.email),
