@@ -4,7 +4,8 @@
   "description": "MEAN stack authentication app",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "node app",
+    "build": "ng build",
     "heroku-postbuild": "cd angular-src && npm install && ng build"
   },
   "dependencies": {
