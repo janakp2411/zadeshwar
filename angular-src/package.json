@@ -5,16 +5,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng-serve",
-    "build": "ng build",
-     "heroku-postbuild": "npm install && ng build"
+    "build": "ng build"
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "^1.0.1",
-    "@angular/compiler-cli": "^5.0.0",
     "@angular/animations": "^5.0.0",
+    "@angular/cli": "^1.0.1",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
+    "@angular/compiler-cli": "^5.0.0",
     "@angular/core": "^5.0.0",
     "@angular/forms": "^5.0.0",
     "@angular/http": "^5.0.0",
@@ -24,6 +23,8 @@
     "angular2-flash-messages": "^2.0.4",
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.4.1",
+    "primeicons": "^1.0.0",
+    "primeng": "^7.1.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

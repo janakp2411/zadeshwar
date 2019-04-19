@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -18,6 +19,9 @@ import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
+
+import {AccordionModule} from 'primeng/accordion';
+import {InputMaskModule} from 'primeng/inputmask';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -40,12 +44,14 @@ const appRoutes: Routes =  [
     ProfileComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
+    AccordionModule,
+    InputMaskModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot()
   ],

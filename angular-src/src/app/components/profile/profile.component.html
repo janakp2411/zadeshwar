@@ -4,52 +4,69 @@
     <li class="list-group-item">Email : {{user.email}}</li>
   </ul>
 </div>
+<div class="panel-container">
+  <p-accordion [multiple]="true">
+    <p-accordionTab class="accordion" [selected]="true" *ngFor="let userDetails of userDetailsData; index as i;" header="Memebr {{i+1}}">
+      <form class="panel-body">
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <input type="text" [(ngModel)]="userDetails.name" name="name" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="col-md-4 mb-3">
+                <input type="text" [(ngModel)]="userDetails.middleName" name="middleName" class="form-control" id="" placeholder="Middle Name">
+              </div>
+            <div class="col-md-4 mb-3">
+              <input type="text" [(ngModel)]="userDetails.surName" name="surName" class="form-control" id="" placeholder="Surname">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <!-- <input type="number" [(ngModel)]="userDetails.phone" name="phone" class="form-control" id="phone" placeholder="555-555-5555"> -->
+              <p-inputMask placeholder="111-111-1111" name="phone" [(ngModel)]="userDetails.phone" mask="999-999-9999"></p-inputMask>
+            </div>
+            <div class="col-md-4 mb-3">
+              <input type="email" [(ngModel)]="userDetails.email" name="email" class="form-control" id="email" placeholder="jayzadeshwar@gmail.com">
+            </div>
+            <div class="col-md-4 mb-3">
+              <input type="date" [(ngModel)]="userDetails.birthdate" name="birthdate" class="form-control" id="birthdate" placeholder="Birthdate">
+            </div>
+          </div>
+          <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <input type="text" [(ngModel)]="userDetails.address" name="address" class="form-control" id="address" placeholder="Address">
+              </div>
+              <div class="col-md-4 mb-3">
+                <input type="text" [(ngModel)]="userDetails.state" name="email" class="form-control" id="state" placeholder="State">
+              </div>
+              <div class="col-md-4 mb-3">
+                <input type="text" [(ngModel)]="userDetails.zipcode" name="zipcode" class="form-control" id="zipcode" placeholder="Zipcode">
+              </div>
+            </div>
+      </form>
+      <div class="panel-footer">
+        <button class="btn btn-primary" (click)="onClearMember(i)">Clear</button>
+      <button class="btn btn-danger" (click)="onDeleteMember(i)">Remove</button>
+      </div>
+    </p-accordionTab>
+    <div class="mt-4 btn-container">
+      <button class="btn btn-primary" (click)="onUserDetailsSubmit(userDetailsData)">Save</button>
+      <button class="btn btn-primary" (click)="onAddNewUser()">Add New User</button>
+    </div>
+  </p-accordion>
+</div>
 
-<div class="mt-3 panel-container" *ngFor="let userDetails of userDetailsData; index as i;">
-  <h4 class="panel-header">Memebr {{i + 1}}</h4>
-  <form class="panel-body">
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <input type="text" [(ngModel)]="userDetails.name" name="name" class="form-control" id="name" placeholder="Name">
-      </div>
-      <div class="col-md-4 mb-3">
-          <input type="text" [(ngModel)]="userDetails.middleName" name="middleName" class="form-control" id="" placeholder="Middle Name">
-        </div>
-      <div class="col-md-4 mb-3">
-        <input type="text" [(ngModel)]="userDetails.surName" name="surName" class="form-control" id="" placeholder="Surname">
-      </div>
+
+<!-- <div class="ui-g">
+  <div class="ui-g-12 ui-md-6">
+    <div class="ui-g-4">First</div>
+    <div class="ui-g-8">
+      <p-inputMask placeholder="111-111-1111" [(ngModel)]="userDetail" mask="999-999-9999"></p-inputMask>
     </div>
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <input type="number" [(ngModel)]="userDetails.phone" name="phone" class="form-control" id="phone" placeholder="555-555-5555">
-      </div>
-      <div class="col-md-4 mb-3">
-        <input type="email" [(ngModel)]="userDetails.email" name="email" class="form-control" id="email" placeholder="jayzadeshwar@gmail.com">
-      </div>
-      <div class="col-md-4 mb-3">
-        <input type="date" [(ngModel)]="userDetails.birthdate" name="birthdate" class="form-control" id="birthdate" placeholder="Birthdate">
-      </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <input type="text" [(ngModel)]="userDetails.address" name="address" class="form-control" id="address" placeholder="Address">
-        </div>
-        <div class="col-md-4 mb-3">
-          <input type="text" [(ngModel)]="userDetails.state" name="email" class="form-control" id="state" placeholder="State">
-        </div>
-        <div class="col-md-4 mb-3">
-          <input type="text" [(ngModel)]="userDetails.zipcode" name="zipcode" class="form-control" id="zipcode" placeholder="Zipcode">
-        </div>
-      </div>
-  </form>
-  <div class="panel-footer">
-    <button class="btn btn-primary" (click)="onClearMember(i)">Clear</button>
-  <button class="btn btn-danger" (click)="onDeleteMember(i)">Remove</button>
   </div>
-
-</div>
-
-<div class="mt-3 btn-container">
-  <button class="btn btn-primary" (click)="onUserDetailsSubmit(userDetailsData)">Save</button>
-  <button class="btn btn-primary" (click)="onAddNewUser()">Add New User</button>
-</div>
+  <div class="ui-g-12 ui-md-6">
+      <div class="ui-g-4">First</div>
+      <div class="ui-g-8">
+        <p-inputMask placeholder="111-111-1111" [(ngModel)]="userDeta" mask="999-999-9999"></p-inputMask>
+      </div>
+    </div>
+</div> -->
