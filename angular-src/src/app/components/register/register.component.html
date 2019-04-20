@@ -1,0 +1,21 @@
+<h2 class="page-header">Register</h2>
+<form (submit)="onRegisterSubmit()">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" autocomplete="off" [(ngModel)]="name" name="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" autocomplete="off" [(ngModel)]="email" name="email" class="form-control" >
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" autocomplete="off" [(ngModel)]="password" name="password" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <input type="password" autocomplete="off" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-control">
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit">
+  <span class="ml-4"><a class="link text-primary" [routerLink]="['/login']">Already Registered ?</a></span>
+</form>
