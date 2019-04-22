@@ -13,4 +13,4 @@ Run app
 $ npm start
 ```
 
-### https://zadewshwar.herokuapp.com
+### https://zadeshwar.herokuapp.com
