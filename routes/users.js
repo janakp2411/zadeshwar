@@ -198,41 +198,34 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res)
 
 // Use Details
 router.post('/addUserDetails', passport.authenticate('jwt', {session:false}), (req, res) => {
-  const { userDetails } = req.body;
-  const { id } = userDetails;
-  const userDetailsData = userDetails.userDetails;
-  UserDetails.findOne({ _id: id }, (err, user) => {
-    if(user){
-      console.log('user found')
-      // const data = new UserDetails({id: user._id, userData:userDetailsData});
-      UserDetails.replaceOneById(mongoose.Types.ObjectId(id), {userData:userDetailsData, id:mongoose.Types.ObjectId(id)}, (err, details) => {
-        console.log(details, err)
-        // console.log(err, 'Details savedDetails savedDetails saved')
-        if(details){
-          return res.json({success: true,msg: 'Details saved', userDetails: details})
-        } else {
-          return res.json({success: false,msg: 'Details not saved',userDetails: details})
-        }
-      })
-      // data.save(function(err, details){
-      //   if(details){
-      //     return res.json({success: true,msg: 'Details saved', userDetails: details.userData})
-      //   } else {
-      //     return res.json({success: true,msg: 'Details not saved',userDetails: details})
-      //   }
-      // })
-    } else {
-      console.log('user not found')
-      const data = new UserDetails({id: mongoose.Types.ObjectId(id), userData:userDetailsData});
-      data.save(function(err, details){
-        if(details){
-          return res.json({success: true,msg: 'Details saved', userDetails: details.userData})
-        } else {
-          return res.json({success: true,msg: 'Details not saved',userDetails: details})
-        }
-      })
-    }
-  })
-});
+    const { userDetails } = req.body;
+    const { id } = userDetails;
+    const userDetailsData = userDetails.userDetails;
+    UserDetails.findOne({ _id: id }, (err, user) => {
+      if(user){
+        console.log('user found')
+        const data = new UserDetails({id: user._id, userData:userDetailsData});
+        data.findOneAndUpdate({id:mongoose.Types.ObjectId(id)}, {userData:userDetailsData, id:mongoose.Types.ObjectId(id)}, (err, details) => {
+          console.log(details, err)
+          // console.log(err, 'Details savedDetails savedDetails saved')
+          if(details){
+            return res.json({success: true,msg: 'Details saved', userDetails: details})
+          } else {
+            return res.json({success: false,msg: 'Details not saved',userDetails: details})
+          }
+        })
+      } else {
+        console.log('user not found')
+        const data = new UserDetails({id: mongoose.Types.ObjectId(id), userData:userDetailsData});
+        data.save(function(err, details){
+          if(details){
+            return res.json({success: true,msg: 'Details saved', userDetails: details.userData})
+          } else {
+            return res.json({success: true,msg: 'Details not saved',userDetails: details})
+          }
+        })
+      }
+    })
+  });
 
 module.exports = router;
